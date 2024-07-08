@@ -1,3 +1,4 @@
+import { UserButton } from "@clerk/clerk-react";
 import { Link, useParams } from "react-router-dom";
 
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
@@ -32,7 +33,8 @@ export function Sidebar({ isCollapsed }: SidebarProps) {
             <span className="text-zinc-300">({data?.rooms.length ?? 0})</span>
           </div>
 
-          <div>
+          <div className="flex items-center gap-4">
+            <UserButton />
             <CreateRoomForm />
           </div>
         </div>
