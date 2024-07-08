@@ -29,6 +29,7 @@ type Message {
 type Mutation {
   createMessage(createMessageInput: CreateMessageInput!): Message!
   createRoom(createRoomInput: CreateRoomInput!): Room!
+  deleteRoom(id: String!): Room!
 }
 
 type Query {

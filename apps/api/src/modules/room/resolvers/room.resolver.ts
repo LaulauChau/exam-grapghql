@@ -22,4 +22,9 @@ export class RoomResolver {
   async createRoom(@Args("createRoomInput") input: CreateRoomInput) {
     return this.roomService.create(input.userIds, input.name);
   }
+
+  @Mutation(() => Room)
+  async deleteRoom(@Args("id") id: string) {
+    return this.roomService.delete(id);
+  }
 }

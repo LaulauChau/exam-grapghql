@@ -20,10 +20,6 @@ export function Sidebar({ isCollapsed }: SidebarProps) {
   const { roomId } = useParams<{ roomId: string }>();
   const { data } = useGetRooms();
 
-  if (!data) {
-    return null;
-  }
-
   return (
     <div
       data-collapsed={isCollapsed}
@@ -33,7 +29,7 @@ export function Sidebar({ isCollapsed }: SidebarProps) {
         <div className="flex justify-between p-2 items-center">
           <div className="flex gap-2 items-center text-2xl">
             <p className="font-medium">Chats</p>
-            <span className="text-zinc-300">({data.rooms.length})</span>
+            <span className="text-zinc-300">({data?.rooms.length ?? 0})</span>
           </div>
 
           <div>
@@ -43,7 +39,7 @@ export function Sidebar({ isCollapsed }: SidebarProps) {
       )}
 
       <nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
-        {data.rooms.map((room) =>
+        {data?.rooms.map((room) =>
           isCollapsed ? (
             <TooltipProvider key={room.name}>
               <Tooltip delayDuration={0}>

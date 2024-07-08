@@ -77,3 +77,11 @@ export const CREATE_ROOM = graphql(/* GraphQL */ `
     }
   }
 `);
+
+export const DELETE_ROOM = graphql(/* GraphQL */ `
+  mutation DeleteRoom($id: String!) {
+    deleteRoom(id: $id) {
+      id
+    }
+  }
+`);

@@ -1,3 +1,4 @@
+import { useAuth } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 
 import { Sidebar } from "~/components/layouts/sidebar";
@@ -7,6 +8,7 @@ import {
   ResizablePanelGroup,
 } from "~/components/ui/resizable";
 import { cn } from "~/libs/utils";
+import { useGetRooms } from "../hooks/use-get-rooms";
 import { Chat } from "./chat";
 
 type ChatLayoutProps = {
@@ -22,6 +24,8 @@ export function ChatLayout({
 }: ChatLayoutProps) {
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
   const [isMobile, setIsMobile] = useState(false);
+  const { userId } = useAuth();
+  const { data } = useGetRooms();
 
   useEffect(() => {
     function checkScreenWidth() {

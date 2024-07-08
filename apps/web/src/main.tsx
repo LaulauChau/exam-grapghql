@@ -1,7 +1,11 @@
 import { SignIn, SignUp } from "@clerk/clerk-react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 
 import { ProtectedLayout } from "~/components/layouts/protected-layout";
 import { RootLayout } from "~/components/layouts/root-layout";
@@ -24,12 +28,16 @@ const router = createBrowserRouter([
         element: <ProtectedLayout />,
         children: [
           {
-            path: "/:roomId",
+            path: "/:roomId?",
             element: (
               <ChatLayout defaultLayout={undefined} navCollapsedSize={8} />
             ),
           },
         ],
+      },
+      {
+        path: "*",
+        element: <Navigate to="/" replace />,
       },
     ],
   },

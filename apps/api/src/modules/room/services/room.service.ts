@@ -43,4 +43,8 @@ export class RoomService {
       include: { messages: true, users: true },
     });
   }
+
+  async delete(id: string) {
+    return this.databaseService.room.delete({ where: { id } });
+  }
 }
