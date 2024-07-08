@@ -1,0 +1,23 @@
+{
+  "name": "@repo/graphql",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/gql/index.ts"
+  },
+  "scripts": {
+    "clean": "rimraf .turbo node_modules",
+    "codegen": "graphql-codegen --config codegen.ts"
+  },
+  "dependencies": {
+    "@graphql-typed-document-node/core": "^3.2.0",
+    "graphql": "^16.9.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
+    "@graphql-codegen/client-preset": "^4.3.2",
+    "@repo/typescript-config": "workspace:*",
+    "rimraf": "^5.0.8",
+    "typescript": "^5.5.3"
+  }
+}

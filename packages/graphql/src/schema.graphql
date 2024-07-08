@@ -1,0 +1,58 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateMessageInput {
+  content: String!
+  roomId: String!
+  userId: String!
+}
+
+input CreateRoomInput {
+  name: String!
+  userIds: [String!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Message {
+  content: String!
+  createdAt: DateTime!
+  id: ID!
+  room: Room!
+  user: User!
+}
+
+type Mutation {
+  createMessage(createMessageInput: CreateMessageInput!): Message!
+  createRoom(createRoomInput: CreateRoomInput!): Room!
+}
+
+type Query {
+  messages(roomId: String!): [Message!]!
+  room(id: String!): Room!
+  rooms(userId: String!): [Room!]!
+  users: [User!]!
+}
+
+type Room {
+  id: ID!
+  messages: [Message!]
+  name: String
+  users: [User!]!
+}
+
+type Subscription {
+  messageCreated(roomId: String!): Message!
+}
+
+type User {
+  email: String!
+  id: ID!
+  messages: [Message!]
+  name: String
+  rooms: [Room!]
+}
